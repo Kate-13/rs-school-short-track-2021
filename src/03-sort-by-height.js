@@ -20,7 +20,7 @@ function sortByHeight(arr) {
     }
   }
 
-  result.sort((a, b) => a - b); //sort(function(a, b) {return a - b;});
+  result.sort((a, b) => a - b); // sort(function(a, b) {return a - b;});
 
   for (let j = 0; j < index.length; j++) {
     result.splice(index[j], 0, -1);
