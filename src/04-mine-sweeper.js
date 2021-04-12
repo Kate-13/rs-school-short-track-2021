@@ -21,8 +21,72 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const result = [];
+  for (let i = 0; i < matrix.length; i++) {
+    const a = [];
+    for (let j = 0; j < matrix[i].length; j++) {
+      let number = 0;
+
+      // rigth
+
+      if ((j + 1) < matrix[i].length) {
+        if (matrix[i][j + 1] === true) {
+          number += 1;
+        }
+      }
+
+      // left
+
+      if ((j - 1) >= 0) {
+        if (matrix[i][j - 1] === true) {
+          number += 1;
+        }
+      }
+
+      if ((i + 1) < matrix.length) { // down
+        if (matrix[i + 1][j] === true) {
+          number += 1;
+        }
+      }
+
+      if ((i - 1) >= 0) { // up
+        if (matrix[i - 1][j] === true) {
+          number += 1;
+        }
+      }
+
+      if ((i - 1) >= 0 && (j + 1) < matrix[i].length) { // diag 01
+        if (matrix[i - 1][j + 1] === true) {
+          number += 1;
+        }
+      }
+
+      if ((i + 1) < matrix.length && (j + 1) < matrix[i].length) { // diag 02
+        if (matrix[i + 1][j + 1] === true) {
+          number += 1;
+        }
+      }
+
+      if ((i - 1) >= 0 && (j - 1) >= 0) { // diag 03
+        if (matrix[i - 1][j - 1] === true) {
+          number += 1;
+        }
+      }
+
+      if ((i + 1) < matrix.length && (j - 1) >= 0) { // diag 04
+        if (matrix[i + 1][j - 1] === true) {
+          number += 1;
+        }
+      }
+
+      a.push(number);
+    }
+
+    result.push(a);
+  }
+
+  return result;
 }
 
 module.exports = minesweeper;
